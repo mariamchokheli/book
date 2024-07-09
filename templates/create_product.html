@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container mt-3">
+    <form method="POST" enctype="multipart/form-data" action="{% if product %}{{ url_for('edit_product', product_id=product.id) }}{% else %}{{ url_for('create_product') }}{% endif %}">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.price.label(class="form-label") }}
+            {{ form.price(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.img.label(class="form-label") }}
+            {{ form.img(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

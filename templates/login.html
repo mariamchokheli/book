@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="container mt-5 shadow login">
+  <h2>Login</h2>
+  <div class="row">
+    {% for errors in form.errors.values() %}
+      <div class="alert alert-danger">
+        {% for error in errors %}
+          <br>{{ error }}</br>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+  <form method="POST" class="col p-3">
+    {{ form.hidden_tag() }}
+    <div class="row">
+      {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+    </div>
+    <div class="row mt-2">
+      {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+    </div>
+    <div class="row mt-2">
+      {{ form.submit(class="btn btn-primary", placeholder=form.submit.label.text) }}
+    </div>
+  </form>
+</div>
+
+{% endblock %}
